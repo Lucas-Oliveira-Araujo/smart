@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de RPM</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #20232a;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            color: #ff4c4c;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .imagem {
+            text-align: center;
+        }
+
+        .imagem img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .cal {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .cal label,
+        .cal input {
+            font-size: 18px;
+        }
+
+        .cal input {
+            padding: 5px;
+            width: 150px;
+            margin: 10px 0;
+        }
+
+        .cal button {
+            border-radius: 20px;
+            background-color: #ff4c4c;
+            color: white;
+            width: 120px;
+            height: 40px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .cal button:hover {
+            background-color: #e03b3b;
+        }
+
+        #resultado {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .texto {
+            margin-top: 30px;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        h1 {
+      text-align: center;
+      margin-top: 30px;
+      color: #20232a;
+    }
+    </style>
+</head>
+<body>
+    
+    <h1>Furadeira</h1>
+    <div class="container">
+        <div class="imagem">
+            <img src="imagem/map_fura.png" alt="Furadeira">
+        </div>
+
+        <div class="cal">
+            <label for="broca">Digite o valor da broca (mm):</label><br>
+            <input type="number" id="broca" step="any" placeholder="Ex: 10">
+            <br>
+            <button onclick="calcularRPM()">Calcular RPM</button>
+        </div>
+
+        <p id="resultado"></p>
+
+        <div class="texto">
+            <p>
+                A furadeira é uma ferramenta fundamental utilizada para perfurar diversos materiais, como metais, madeira e plástico.
+                Seu funcionamento baseia-se na rotação de uma broca, que realiza o corte e a remoção do material para formar o furo.
+                Existem vários tipos de furadeiras, como a portátil, de bancada, de coluna e radial, cada uma adequada a diferentes aplicações.
+                Para garantir precisão e segurança, é essencial utilizar a broca correta, ajustar os parâmetros de corte e fixar bem a peça.
+                A furadeira também é amplamente empregada em centros de usinagem CNC, onde oferece maior automação e precisão nos processos.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function calcularRPM() {
+            const broca = parseFloat(document.getElementById("broca").value);
+            const resultado = document.getElementById("resultado");
+
+            if (!isNaN(broca) && broca !== 0) {
+                const rpm = 318 * 15 / broca;
+                resultado.textContent = "Seu RPM ideal é: " + rpm.toFixed(2);
+            } else {
+                resultado.textContent = "Por favor, digite um valor válido diferente de zero.";
+            }
+        }
+    </script>
+</body>
+</html>
